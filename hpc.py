@@ -1,49 +1,88 @@
-import collections, select, types
+from multiprocessing import BaseManager, JoinableQueue, Pipe, Pool, Process, SharedMemory 
+import nf, typing, asyncio 
 
-class Work(object):
-    def __init__(self, target):
-        self.target=target
-        self.sendval=None 
-        self.stack=[None]
-        pass
-    def start(self):
-        try: 
-            instance=self.target.send(self.sendval)
-            if isinstance(instance, ):
-                return instance
-            elif isinstance(instance, types.GeneratorType):
-                self.stack.append(self.target)
-                self.sendval=None 
-                self.target=instance
-            else: 
-                if not self.stack: return 
-                self.sendval=None 
-                self.target=self.stack.pop()
-        except StopIteration:
-            raise 
+class Base(BaseManager): pass 
 
-class Scheduler(object):
-    def __init__(self):
-        self.task_queqe= collections.deque()
-        self.read_waiting= { }
-        self.write_waiting= { }
-        self.write_waiting= { }
-        self.numtask= 0 
+class Shared(SharedMemory): 
+    def __init__(**namespace):
+        super().__init__()
+        self._stateful_data={ f"{}": x }
 
-    def new(self,target):
-        task= Work(object)
-        self.schedule(task)
-        self.numtasks+=1 
+
+def __init__(self, object, parallel_object=None, *args):
+    self.object=object
+    self.parallel_object=parallel_object
+    self.duplex_state= False if args.get(['dstate']) Not True 
+    self.product={}
+    self.consumer=JoinableQueue
+    self.initializer=False
+
+def start():
+    self.initializer=True
+
+def product(self, object):
+    e=type(self.task)
+    q=self.consumer
+    while self.task is iterable:
+        for task in self.task:
+            q.put(task)
+            break 
+    while isinstance(process, ):
         pass
 
-    def schedule(self,task):
-        self.task_queqe.append(task)
-        pass
+    while :
+        supplica
 
-    def read(self, task, fd): 
-        try: 
-            self.read_waiting[fd]= task
-        except IOError and OSError: 
+
+
+def __thread__( **rest):
+    q=self.consumer.qsize
+    for key, value in rest.values:
+        while isinstance(value, types.FunctionType):
+            self.consumer.put(value)
             pass 
-    def write(self,task,fd):
-        self.write_waiting[fd]= task
+        while isinstance(value, types.)
+
+ def __pipe__(args):
+        supplicant_host, client_host= args
+    while True:
+        while supplicant_host.poll():
+            with supplicant_host as supplicant_conn:
+                if func in args:
+                    conn.recv_bytes_into(args.get(['size']), args.get(['func']))
+                else:
+                    
+                    pcap=nf(supplicant_host).bypass
+                    conn.send()
+
+        while client_host.poll():
+            with client_host as conn:
+                if func in args: 
+                    conn.recv_bytes_into(bysize,func)
+                    pass 
+                else:
+                    pcap=nf(conn.recv()).bypass
+                    conn.send(pcap) 
+                    pass 
+        exception as e: 
+                pass 
+    
+
+while self.initializer:
+try: 
+    if self.consumer.qsize > 0:
+        task=Pool()
+        task.daemon=True
+        task.start
+        self.consumer.join
+
+    elif isinstance(self.parallel_object, SocketType):
+        supplicant_host, client_host= Pipe(self._duplex_state)
+        task=Pool(target=, args=(supplicant_ho, client))
+        
+    elif self.parallel_object is list:
+        share=Value(f'{}', parallel_object, lock)
+        task=Manager()
+        task. 
+
+except :

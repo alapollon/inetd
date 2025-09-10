@@ -44,6 +44,7 @@ def decode_dns(packet):
 def decode_http(packet):
     pass 
 
+
 async def process(packet):
     try:
         pdata=content
@@ -56,15 +57,15 @@ async def process(packet):
         while cpkt.haslayer(UDP):
             return decode_datagram(packet)
         while cpkt.haslayer(TCP):
-            flags=cpkt.getlayer(TCP).flags
-            if cpkt[IP].proto == "?":
+            flags=list(cpkt.getlayer(TCP).flags)
+            if "RST" in flags & "ACK" in flags:
                 return pdata.add(decode_sshp(packet))
             elif cpkt[IP].proto == "?":
                 return pdata.add(decode_ssl(packet)) 
             elif cpkt[IP].proto == "?": 
                 return pdata.add(decode_http(packet)) 
         while cpkt[IP].proto == 1:
-            return decode_icmp(packet)
+            return pdata.add(decode_icmp(packet)) 
     except Exception as e:
         if e: 
             duple=duplicate(packet)

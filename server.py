@@ -1,5 +1,5 @@
-import protocol, ip, Sequrity, pysftp, ssl, socket, collections, socketserver, threading, contextlib
-from sqlalchemy.orm import declarative_base
+  mport protocol, ip, localproduct, remoteproduct, security, logger, pysftp, ssl, socket, collections, socketserver, typing, threading, multiprocessing, contextlib
+from scapy.all import Ether, IP, TCP, DNS, UDP 
 from collections import namedtuple, defaultDict
 
 access=sockect
@@ -7,24 +7,28 @@ dserver=socketserver
 context=contextlib
 interfaces_address={}
 
+frame=Ether
+proto=IP 
+rfc=TCP
+name_services=DNS
+datagram=UDP
+
 
 class Downlink():
     def __init__(self,func):
-        self.process=func 
+        self.fd=func 
     def read(self,hpc.sched,task):
-        fileno=self.process.fileno()
-        sched.readwait(task, fileno)
+        file=self.fd.fileno()
+        sched.readwait(task, file)
 class Uplink():
     def __init__(self,func):
         self.process=func
     def write(self, sched,task):
-        fileno=self.process.fileno()
-        sched.writewait(task,fileno)
-        
+        fileno=self.fd.
 class Coroutine(object):
-    def __init__(self, switch, secure=False):
-        self.switch=switch
-        self.secure=secure
+    def __init__(self, soc, secure=False):
+        self.protocol=soc
+        self.secure=security()
         self.edge_weights=[None]
         pass
     def connect(self, target):
@@ -45,19 +49,21 @@ class Coroutine(object):
             pass 
 
     def send(self, data):
-        while data >= 1:
-                yield Uplink(self.protocol.send(data, flags)).send
-                if data == string:
-                    data=0
-                elif data is list: 
-                    data.pop
-                pass
-    def receive(self,length, flag):
-        yield Downlink(self.protocol.recvfrom(bufsize=length, flag)).read
-        pass
-    def close(self):
-        yield self.protocol.close()
-        pass
+        while dat 
+
+class Packet(abc, frame, proto, rfc, name_services, datagram):
+    def __init__(self, **header):
+        super(frame(), proto()).__slot__():
+            self.destination= x if x != 
+
+    def layer1(self, cls):
+        
+        return super(f"{}"
+    
+    @.setter
+    def (self, value):
+        self._ = value
+
 
 class Base(declarative_base):
     def __init__(self, api):
@@ -67,10 +73,27 @@ class Base(declarative_base):
         self.arrange=registry()
 
 class UserDatabase(Base):
-    def __init__(self, api):
-        super(Base)__init__(api)
+    def __init__(self, args):
+        super(f'{socket.gethostname()}.database', localproduct( args.get['localdata']), remoteproduct(args.get['remotedata'])).__init__()
+            
         pass
     
+  
 
-    
+class LocalProduct(Userdatabase):
+    def __init__(self, api):
+        super().__init__()
+        self._online_url={'localhost': '', 'localport':0}
 
+        pass
+
+def __init__():
+        self._timing={ "localhost": asyncio.run(timing.start()) } 
+        self._local_arp_table={}
+        self.local_name
+
+
+
+def spoof(self, target: string):
+
+        
