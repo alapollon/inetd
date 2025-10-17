@@ -1,5 +1,5 @@
 from sqlalchemy.orm import attributes, attribute_keyed_dict, collection, column_property, DeclarativeBase, mapped_column, Mapped, MappedAsDataclass, mapped_column, relationship, registry, ReflectedIndex 
-from sqlalchemy import BIGINT, create_engine, Column, Integer, ForeignKey, func, MetaData, NVARCHAR, String, select, Table, TIMESTAMP
+from sqlalchemy import Bigint, CheckConstraint, create_engine, Column, Integer, ForeignKey, func, MetaData, NVARCHAR, String, select, Table, TIMESTAMP
 from collections.abc import Sequence, Callable, Awaitable 
 import underwrite, time, typing, whack, os 
 from sqlalchemy.ext.declarative import AbstractConcreteBase
@@ -22,10 +22,10 @@ class SpineLeaflet():
 
 sp128=SpineLeaflet
 
-def __init__(self, args):
+def __init__(self, **database):
     self.engine= create_engine(args.get(["api"], False), echo=args.get['echo'], logging_name="scylla", enable_from_linting=args.get['lint'], =ars.get['isolation'],  ) 
-    self.date=time
     self.remote=[...args.get(data**, False)]
+    self.date=time
 
 
 class Base(DeclarativeBase:
@@ -38,15 +38,28 @@ class Base(DeclarativeBase:
 primary_association_table= Table(
     "primary",
     Base.metadata,
-    Column("assetkey", ForeignKey(cloud.asset))
-    Column("mac", ForeignKey(cloud.mac))
+    Column("index", ForeignKey(cloud.index))
+    Column("mac", ForeignKey(cloud.mac)),
+    Column("update", ForeignKey(cloud.lastupdate))
 )
 
 secondary_association_table=Table(
     "secondary"
     Base.metadata,
-    Column("longnet", ForeignKey(cloud.longnet)),
-    Column("mac", ForeignKey(cloud.mac))
+    Column("key", ForeignKey(cloud.asset))
+    Column("mac", ForeignKey(cloud.mac)),
+    Column("longinet", pirmary_key=True ),
+    Column("inet", primary_key=True )
+)
+
+hostmask=Table(
+    "hostable",
+    Base.metadata,
+    Column("longnet",)
+    Column("inet"),
+    Column("key", ForeignKey(cloud.asset)),
+    Column("mac", ),
+    UnniqueCostraint()
 )
 
 
@@ -57,14 +70,12 @@ class Primary(Base, unsafe_hash=True ):
     vendor: Mapped[]=mapped_column() 
     lastupdate: Mapped[]=mapped_column( insert_default=func.) 
     mac: Mapped[]=mapped_column()
-    longnet: Mapped[]=mapped_column()
     
     def __init__(self, **data):
          self.asset_key=underwrite().generate_from_asset_identity()
          self.mac_address=None 
          
-class DistributionNode(DefferedReflection, Base):
-    
+class NorthDakota(DefferedReflection, Base):
     __tablename__= "spine"
     longnet=column_property()
     inet=Column()
@@ -78,57 +89,41 @@ class DistributionNode(DefferedReflection, Base):
         ),
         backref="topo"
     )
-    spine: Mapped[Dict[str, "NodeSchema" ]]=relationship(
-        collection_class=mapped_collection(lambda gateway: gateway if gateway in whack(gateway).network_domain())
+    spine: Mapped[List[]]=relationship(
+        collection_class=mapped_collection()
     )
-    
+   
 
+class Yorktown(DefferedReflection, Base):
 
-class Hostable(DefferedReflection, Base):
+    __table__="endpoint"
     
-    
-    def get_endpoint_by_vendors()-> tuple:
-        return 
-        
-    
-    __tablename__="host"
-    mac=Column( )
-    hops=Column( Integer )
-    jitter=Column(Float)
-    os=Column( String )
     timezone=Column(String)
-    neighbor: Mapped [Dict[str,"HostTable"]]=relationship(
+    
+    operatingsystem=Column()
+    
+    neighbor: Mapped [Dict[str,]]=relationship(
         "HostTable",
         collection_class=mapped_collection(lambda ip, longip: )
-        ),
+        , 
+        uselist=True, 
         backref="neighbor"
     )
 
-
-class Neveda:
-    pass 
 
 class KansasCinncinati( Base):
     __tablename__="target"
    pass 
 
 
-class EdgeRelationship(Concrete):
+class Neveda(ConcreteBase):
     __abstract__= True 
     __tablename__="edges"
     index=relationship()
     unviverse=relationship()
 
-    def __init__(self, **stats):
-        self.hops=
-        self.latency=
-        self.jitter=
-        self.hostcount=
-        self.nodecount=
-        self.timezone=
-        pass 
 
-class Databases():
+class California():
     __tablename__="database"
     index=Column(Integer)
     universal=Column(String, primary_key=True, nullable=False )
