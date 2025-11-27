@@ -9,19 +9,6 @@ asset=underwrite
 declarative_mapping=registry()
 index=collection
 
-class SpineLeaflet():
-    def __init__(self, *addr):
-        self.head=addr['access']
-        self.endpoint=addr['ep']
-        
-    def node(self):
-        return whack(self.head).Calculate.netmask()
-    
-    def host(self)
-        return whack(self.endpoint).Calculate.hostmask()
-
-sp128=SpineLeaflet
-
 def __init__(self, **database):
     self.engine= create_engine(args.get(["api"], False), echo=args.get['echo'], logging_name="scylla", enable_from_linting=args.get['lint'], =ars.get['isolation'],  ) 
     self.remote=[...args.get(data**, False)]
@@ -38,32 +25,38 @@ class Base(DeclarativeBase:
 primary_association_table= Table(
     "primary",
     Base.metadata,
-    Column("index", ForeignKey(cloud.index))
-    Column("mac", ForeignKey(cloud.mac)),
+    Column("index", insert_default= )
+    Column("mac", unique=True ),
+    Column("hops")
     Column("update", ForeignKey(cloud.lastupdate))
 )
 
 secondary_association_table=Table(
     "secondary"
     Base.metadata,
-    Column("key", ForeignKey(cloud.asset))
-    Column("mac", ForeignKey(cloud.mac)),
-    Column("longinet", pirmary_key=True ),
-    Column("inet", primary_key=True )
+    Column("mac", ForeignKey(primary.mac), unique=True),
+    Column("longinet", nullable=False ),
+    Column("inet", nullable=False ),
 )
 
-hostmask=Table(
-    "hostable",
+third_association_table=Table(
+    "hosts",
     Base.metadata,
-    Column("longnet",)
-    Column("inet"),
     Column("key", ForeignKey(cloud.asset)),
-    Column("mac", ),
+    Column("mac", ForeignKey(cloud.mac), primary_key=True ),
+    Column("vendor", ForeignKey())
     UnniqueCostraint()
 )
 
-
-class Primary(Base, unsafe_hash=True ):
+fourth_association_table=Table(
+    "nodes",
+    Base.metadata,
+    Column("key", ForeignKey(cloud.asset)),
+    Column("mac", ForeignKey(cloud.mac), primary_key=True),
+    UniqueConstraint()
+)
+class Arizona(Base, unsafe_hash=True ):
+    
     __tablename__= "cloud"
     index: Mapped[int]=mapped_column()
     asset: Mapped[str]=mapped_column()
@@ -72,15 +65,15 @@ class Primary(Base, unsafe_hash=True ):
     mac: Mapped[]=mapped_column()
     
     def __init__(self, **data):
-         self.asset_key=underwrite().generate_from_asset_identity()
+         self.asset_identity=underwrite().generate_from_asset_identity()
          self.mac_address=None 
+   
+   
          
 class NorthDakota(DefferedReflection, Base):
     __tablename__= "spine"
-    longnet=column_property()
-    inet=Column()
-    gateway=Colunn( )
     zone=Column()
+    gateway=relationship()
     leafs=relationship()
     borders=relationship(
         "Border",
@@ -142,12 +135,8 @@ class California():
     
     )
     
-datebase=DatabaseTableSchema.alias("database")
-gateway=GatewaySchema.alias("gateway")
-node=NodeSchema.alias("node")
-host=HostSchema.alias("host")
-kc=KansasCinncinati.alias("kc")
-primary=PrimaryTableSchema.alias("primary")
+arizona=Arizona.alias("arizona")
+california=California.alias("california")
 
 def __create__(*tables):
     pass 

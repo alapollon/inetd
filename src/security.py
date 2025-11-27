@@ -1,85 +1,73 @@
-import typing, logger, ssl, collections, iscertificate, 
-from scapy.all 
+
 from os.path import isfile, isdir, dirname, basename, listdir, exists
+from scapy.all import *
+from itertools import * 
+import ssl, re
 
+class LayerSecurityProtocol(ssl.SSLcontext):
+    def __init__(self, psk=None):
+        super().__init__(self)
+        self.sharedkey=psk
+        pass
 
+def transverse_items(path, keys)-> tuple:
+    def foo(parameter)-> : 
+        if isfile(parameter):
+            ca_type=re.compile()
+            file_extention=re.match(ca_type, basename(parameter))
+        else: 
+            raise 
+    keyitems=keys
+    user_items={"rootkeys": [], "userkeys":[], "remotekeys":[] }
+    self.keyitems_count=1
+    if exists(path) & isdir(path):
+        index=enumerate(directory_list)=listdir(path)
+        for key, iter in index:
+            if isdir(item) & dirname(item):
+                
+            return items, item_keys, items_count
+    
+   
 def __init__(self, *args):
     self.userpsk=args.get([user_key], False)
-    self.pool=namedtuple('Certificates', 'root, server, nonsort')
+    self.pool=namedtuple('Certificates', 'rootkey, userkey, nonsortedkeys, remotekeys')
     pass 
 
-def transverse(path, keys)-> tuple:
-        items_key=[]
-        items=()
-        items_count=1
-        directory=[None]
-        if exixts(path) & isdir(path):
-            directory+=listdir(path)
-            for item in directory:
-                while isdir(item):
-                    d2=listdir(item)
-                    head= i = dirname(item) if i in keys 
-                    keys+=head
-                    items+=
-                    items_count=len(items)
-                    continue
-                while isfile(item):
-                    item_keys+= basename(item)
-                    items+=item
-                    items_count+=1
-                    continue
-                if isfile(item) == False & isdir(item) == False:
-                        continue
-                return items, item_keys, items_count
-        elif isfile(path):
-            keys+=basename(path)
-            return items, keys, items_count
+lsp=LayerSecurityProtocol
+rootkeys=property(lambda self: self.pool.root)
+userkeys=property(lambda self: self.pool.server)
+unsortedkeys=property(lambda self: self.pool.nonsort)
+remotehostkeys=property( lambda self: self.pool.remotekeys)
 
-def __verify_server_ca__(self, path):
+
+def __verify_ca__(self, path):
     psk=self.pool({},{},{})
     with path as ca:
         while ca:
             keys=list(psk.keys())
-            items, item_keys, items_count=transverse(ca, keys)
+            items, item_keys, items_count=transverse_items(ca, keys)
             for ifcertificate in items:
+                try:
                     index=dirname(ifcertificate)
-                    while index in keys == False | index == "nonsorted" | isfile(ifcertificate):
-                            try:
-                                certificate=iscertificate(ifcertificate)
-                                base=basename(ifcertificate)
-                                psk.nonsort[base]=certificate['identity']
-                            except Exception as e:
-                                pass
-                    while index == "userServer":
-                            try:
-                                certificate=iscertificate(ifcertificate)
-                                base=basename(ifcertificate)
-                                psk.userServer[base]=certificate['identity']
-                            except Exception as e:
-                                pass
-                    while index == "root":
-                        try:
-                            certificate=iscertificate(ifcertificate)
-                            base=basename(ifcertificate)
-                            psk.root[base]=certificate['identity']
-                        except Exception as e:
-                            pass
+                    if index in keys == False | index == "nonsorted" | isfile(ifcertificate):
+                        certificate=iscertificate(ifcertificate)
+                        base=basename(ifcertificate)
+                        psk.nonsort[base]=certificate['identity']
+                            
+                    if index == "userkey":
+                        certificate=iscertificate(ifcertificate)
+                        base=basename(ifcertificate)
+                        psk.userServer[base]=certificate['identity']
+                            
+                    if index == "root":
+                        certificate=iscertificate(ifcertificate)
+                        base=basename(ifcertificate)
+                        psk.root[base]=certificate['identity']
+                except : 
+                    
+async def sendesp():
+    pass 
 
-rootkeys=property(lambda self: self.pool.root)
-userkeys=property(lambda self: self.pool.server)
-unsortedkeys=property(lambda self: self.pool.nonsort)
-
-
-class LSP(ssl.SSLcontext):
-    def __init__(self, psk=None):
-        super().__init__(self)
-        self.
-        pass
-
-
-
-
-
-
-
+def wrap_user_created_socket(self):
+    return 
 

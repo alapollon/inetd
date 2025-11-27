@@ -1,4 +1,4 @@
-  mport protocol, ip, localproduct, remoteproduct, security, logger, pysftp, ssl, socket, collections, socketserver, typing, threading, multiprocessing, contextlib
+import protocol, ip, localproduct, remoteproduct, security, logger, pysftp, ssl, socket, collections, socketserver, typing, threading, multiprocessing, contextlib
 from scapy.all import Ether, IP, TCP, DNS, UDP 
 from collections import namedtuple, defaultDict
 
@@ -14,19 +14,8 @@ name_services=DNS
 datagram=UDP
 
 
-class Downlink():
-    def __init__(self,func):
-        self.fd=func 
-    def read(self,hpc.sched,task):
-        file=self.fd.fileno()
-        file.readwait(task, file)
-class Uplink():
-    def __init__(self,func):
-        self.process=func
-    def write(self, sched,task):
-        fileno=self.fd.fileno()
-        fileno.writewait()
-class Coroutine(object):
+from coroutine import Uplink, Downlink
+class Cosocket(object):
     def __init__(self, soc, secure=False):
         self.protocol=soc
         self.secure=security()
@@ -51,20 +40,6 @@ class Coroutine(object):
 
     def send(self, data):
         while dat 
-
-class Packet(abc, frame, proto, rfc, name_services, datagram):
-    def __init__(self, **header):
-        super(frame(), proto()).__slot__():
-            self.destination= x if x != 
-
-    def layer1(self, cls):
-        
-        return super(f"{}"
-    
-    @.setter
-    def (self, value):
-        self._ = value
-
 
 class Base(declarative_base):
     def __init__(self, api):
