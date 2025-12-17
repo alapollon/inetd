@@ -1,7 +1,7 @@
 #
 
-import collections, context, server, ssl , time, asyncio, pysftp, getpass, os, pathlib, logging, sys, atexit, netfilterqueqe, string, argsparse
-from sqlalchemy import Column, Integer, String, MetaData, Table, Select
+import click, collections, context, server, ssl , typing, time, asyncio, pysftp, getpass, os, pathlib, logging, sys, atexit, multiprocess, netfilterqueqe, string, argsparse
+from collections import namedtuple
 from pandas import DataFrame, MultiIndex, Series
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from server import Base, Database
@@ -15,45 +15,56 @@ logging.basicConfig(
     format='(%(Appname)s %(threadName)-10s) %(message)s',
     filename="sycllanetwork.log"
 )
-t=threading.Event()
+thread=threading.Event()
 register=atexit.register()
 df=DataFrame
 series=Series
 mi= MultiIndex
+A=namedtuple("Links","hosts,spines,leafs")
+B=None 
+C=namedtuple("Processor","sub, routines, hyper")
 
+class Outq():
+    def __init__(self, initialsize: int):
+        self._outgoing_packets=[None]*initialsize
+        self._nitems=0
 
-def init_new_tables_(*args):
-    with self.session as session:
-        session.add_all([])
-        session.commit()
-    pass
-
-
-def check_for_schemas():
-    session=self.session
-    engine=self.engine(url.set(drivername=drivename,database=name) echo)
-    self.meta.create_all(engine)
-    if session()
-
-
-class LocalProduct(Userdatabase):
-        super().__init__()
-        pass 
-     
+    @property
+    def outgoing_matrix(self, func, args):
+        q=self._outgoing_packets 
+        stack_http=q.sorted()
+        stack_icmp=q.sorted()
+        stack_tcp=q.sorted()
+        return ( matrix= map(func, self._outgoing_packets), 
+                tcpq=stack_tcp,
+                httpq=stack_http, 
+                icmpq=stack_icmp) 
     
-class RemoteProduct(Userdatabase):
-         super().__init__()
-        pass
+    @property
+    def outq_nitems(self):
+        return self._nitems
 
+    @.setter
+    def ncount(self):
+        self._nitems=len(self._outgoing_packets)
+
+    def insert(self, object):
+        while object is isinstance(list) | object == self._outgoing_packets:
+            for index, packet in enumerate(object): 
+                
+             self._outgoing_packets[self._nitems]+= object
+        while object is type():
+             pass
+        else: 
+            raise e
+
+    def searchfor(self, item):
+        pass
 
 class ProductDatabase():
     def __init__(self, api):
-        super(context.AbstractAsyncContextManager).__init__():
-        pass
-
-    add=
-    commit= 
-    search= 
+        super(context.AbstractAsyncContextManager, server.).__init__():
+        pass 
 
 
 class MultiplexDistribution:
@@ -85,16 +96,11 @@ origin_by_user = user_input_origin
 parser = argparse.ArgumentParser(
     description=' Enter the target and origin of the attack',
 )
-def scan_prompt_data(self) -> :
-    with sys.argv as argv:
-        print('set arguemnets: ', argv)
-    if x is not None: 
-        print(' continue  ')
-    else :
-        sys.stdout.write()
+
+def spoof():
+    
 
 def whois(target:any ,origin:string):
-        from scapy.all import ARP, Ether, srp
         config=
         function_arp=ARP 
         function_ether=Ether
@@ -144,6 +150,14 @@ def spoof(packet):
             packet.set_payload(str())
 
 
+
+@click.command()
+@click.version_option 
+def cli():
+    if 
+    click.echo() 
+
+
 scan_event= threading.Event()
 
 scan_input_thread = threading.Thread(
@@ -162,6 +176,7 @@ log = logging.getProcess()
 process = ( process_spoof_thread  )
 
 def main():
+    
     volume= 
     interfaces= 
     environment_keys=
@@ -170,6 +185,7 @@ def main():
   parser.addd_arguement('get', action=, default=False)
   parser.add_arguemnt('--spoof',action=,default=False)
   parser.add_arguement('--connect',action=,default=False)
+
   while True:
     
 

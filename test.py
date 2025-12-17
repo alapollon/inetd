@@ -5,7 +5,7 @@ import inspect
 import pyunit 
 import hypothesis
 
-def test_base_map():
+def test_basemap():
     from main import Base
     signature=list(inspect.signature(cls).parameter)
     class DecodeBase:
@@ -14,3 +14,7 @@ def test_base_map():
     def __isinstance__()
         
     ...
+
+def test_defaultcertification():
+    from security import Security
+   prop=Security.__attribute__()
