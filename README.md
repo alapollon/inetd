@@ -1,4 +1,4 @@
-# The Scylla V1 
+# inetd service V1 
 
 #### Purpose 
 
