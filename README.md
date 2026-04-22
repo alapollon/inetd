@@ -1,6 +1,13 @@
-# inetd service V1 
+# system inetd 
 
-#### Purpose 
+## introduction
+
+## version 
+
+## specifications 
+
+
+## reference 
 
 
 
